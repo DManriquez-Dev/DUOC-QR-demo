@@ -1,176 +1,151 @@
-/* --- VARIABLES DE COLORES (Paleta moderna) --- */
-:root {
-    --bg-main: #f4f7f6;       /* Fondo gris claro/verdoso muy suave */
-    --nav-bg: #0d3b41;        /* Azul petróleo profundo para la barra */
-    --text-white: #ffffff;
-    --text-dark: #1e293b;     /* Gris oscuro para textos principales */
-    --primary-color: #10b981; /* Verde esmeralda para botones de acción */
-    --secondary-color: #0284c7;/* Azul brillante para el botón de mapas */
-    --card-bg: #ffffff;       /* Blanco puro para las tarjetas */
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+/* ==========================================================================
+   PALETA PASTEL COMPLETA: AZUL, CELESTE, MORADO, BLANCO Y NEGRO
+   ========================================================================== */
+
+/* 1. Fondo general de la pantalla (Azul Oscuro Profundo) */
+html, body, #root, .home-page {
+  background-color: #0b0f19 !important;
+  color: #ffffff !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* --- ESTILOS GENERALES --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: var(--bg-main);
-    color: var(--text-dark);
-}
-
-/* --- NAVBAR RESPONSIVE --- */
-.navbar {
-    background-color: var(--nav-bg);
-    color: var(--text-white);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.3rem;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-}
-
-.nav-links a {
-    color: #94a3b8;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: var(--text-white);
-}
-
-/* --- CONTENEDOR HOME --- */
+/* Container que centra todo en PC */
 .home-container {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
+/* 2. Sección del título superior */
 .hero-section {
-    text-align: center;
-    margin-bottom: 3rem;
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.hero-section span {
+  color: #a5f3fc !important; /* Celeste Pastel */
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
 .hero-section h1 {
-    font-size: 2.2rem;
-    color: var(--nav-bg);
-    margin-bottom: 0.8rem;
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: #ffffff !important;
 }
 
 .hero-section p {
-    font-size: 1.1rem;
-    color: #64748b;
-    max-width: 600px;
-    margin: 0 auto;
+  color: #94a3b8 !important; /* Blanco suave */
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* --- TARJETAS DE ACCIÓN --- */
+/* 3. La Grilla que ordena tus dos bloques de lado a lado en PC */
 .actions-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas perfectas */
+  gap: 2.5rem;
 }
 
+/* 4. Estilos para tus dos tarjetas */
 .action-card {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 2rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  background-color: #131a2c !important; /* Azul secundario para las tarjetas */
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+/* Emojis/Iconos que pusiste */
 .card-icon {
-    font-size: 3.5rem;
-    color: var(--nav-bg);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
+
+.action-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 0.8rem 0;
+}
+
+/* Modificación según la tarjeta para las luces decorativas */
+.card-celeste h3 { color: #a5f3fc !important; } /* Título celeste pastel */
+.card-morado h3 { color: #e9d5ff !important; }  /* Título morado pastel */
 
 .action-card p {
-    color: #64748b;
-    font-size: 0.95rem;
+  color: #cbd5e1 !important;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 2rem 0;
+  min-height: 45px; /* Alinea los textos */
 }
 
-/* --- BOTONES --- */
+/* Efectos de iluminación al pasar el mouse por encima */
+.card-celeste:hover {
+  transform: translateY(-5px);
+  border-color: #a5f3fc !important;
+  box-shadow: 0 0 25px rgba(165, 243, 252, 0.15);
+}
+
+.card-morado:hover {
+  transform: translateY(-5px);
+  border-color: #e9d5ff !important;
+  box-shadow: 0 0 25px rgba(233, 213, 255, 0.12);
+}
+
+/* 5. Los Botones con Letras Negras para máximo contraste */
 .btn {
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    transition: transform 0.2s, opacity 0.2s;
-    color: var(--text-white);
+  border: none !important;
+  padding: 1rem 2rem !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  border-radius: 14px !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  color: #000000 !important; /* TEXTO NEGRO IMPRESCINDIBLE */
+  transition: transform 0.2s ease, filter 0.2s ease !important;
 }
 
-.btn:active {
-    transform: scale(0.98);
+.btn:hover {
+  filter: brightness(1.1) !important;
+  transform: scale(1.02);
 }
 
-.btn-primary { background-color: var(--primary-color); }
-.btn-secondary { background-color: var(--secondary-color); }
-
-/* --- SECCIÓN INFORMATIVA --- */
-.info-section h2 {
-    font-size: 1.5rem;
-    color: var(--nav-bg);
-    margin-bottom: 1rem;
+/* Botón Celeste Pastel */
+.btn-celeste {
+  background: linear-gradient(135deg, #a5f3fc 0%, #7dd3fc 100%) !important;
+  box-shadow: 0 4px 15px rgba(165, 243, 252, 0.2);
 }
 
-.info-box {
-    background-color: #e2e8f0;
-    border-left: 5px solid var(--nav-bg);
-    padding: 1.2rem;
-    border-radius: 0 8px 8px 0;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
+/* Botón Morado Pastel */
+.btn-morado {
+  background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 100%) !important;
+  box-shadow: 0 4px 15px rgba(233, 213, 255, 0.15);
 }
 
-.info-icon {
-    color: var(--nav-bg);
-}
-
-/* --- DISEÑO RESPONSIVE (MEDIA QUERY) --- */
+/* Responsive para cuando achiques la pantalla */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .actions-grid {
-        grid-template-columns: 1fr; /* Pasa a una sola columna en celulares */
-        gap: 1.5rem;
-    }
-
-    .hero-section h1 {
-        font-size: 1.8rem;
-    }
+  .actions-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
