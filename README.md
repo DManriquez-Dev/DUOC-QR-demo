@@ -5,7 +5,7 @@ Proyecto EA3 · Software Factory FullStack · Arquitectura de Microservicios
 ## Estructura del proyecto
 
 ```
-qr-duoc-sca2/
+qr-duoc-sca2//
 ├── docker-compose.yml
 ├── .env.example
 ├── database/
