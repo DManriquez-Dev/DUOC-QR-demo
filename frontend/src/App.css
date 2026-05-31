@@ -149,3 +149,108 @@ html, body, #root, .home-page {
     gap: 1.5rem;
   }
 }
+
+/* ======================
+   NAVBAR / LAYOUT
+   ====================== */
+.app-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(11,15,25,0.95);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  z-index: 50;
+}
+.nav-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  color: #a5f3fc;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.nav-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+}
+.nav-links a.active {
+  color: #0b0f19;
+  background: linear-gradient(135deg, #a5f3fc 0%, #7dd3fc 100%);
+  font-weight: 700;
+}
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+}
+.nav-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #cbd5e1;
+  margin: 4px 0;
+  border-radius: 2px;
+}
+
+/* Content spacing to avoid being cubierto por la navbar */
+.app-root .content-wrapper {
+  padding-top: 72px; /* espacio para navbar */
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Page common */
+.page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.info-card {
+  background: #0f1724;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.help-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Ajustes responsivos adicionales */
+@media (max-width: 900px) {
+  .hero-section h1 { font-size: 2.4rem; }
+  .hero-section p { font-size: 1rem; }
+}
+
+@media (max-width: 600px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; position: absolute; right: 1rem; top: 56px; background: #071023; flex-direction: column; padding: 0.75rem; border-radius: 10px; }
+  .nav-links.open { display: flex; }
+  .nav-inner { padding: 0.5rem 0.75rem; }
+  .home-container { padding: 1rem; }
+  .hero-section h1 { font-size: 1.8rem; }
+  .card-icon { font-size: 2rem; }
+  .btn { padding: 0.85rem 1rem !important; }
+  .help-actions { flex-direction: column; }
+}
