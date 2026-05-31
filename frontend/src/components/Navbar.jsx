@@ -1,36 +1,28 @@
-import { useState } from 'react';
-import './Navbar.fixed.css';
+import { NavLink, Link } from 'react-router-dom'
+import { useState } from 'react'
 
-const Navbar = () => {
-  // Estado para controlar si el menú móvil está abierto o cerrado
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+function Navbar() {
+  const [open, setOpen] = useState(false)
 
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <h2>DuocUC</h2>
-      </div>
+    <nav className="app-nav">
+      <div className="nav-inner">
+        <Link to="/" className="brand">Duoc UC</Link>
 
-      {/* Enlaces de navegación. En móvil cerramos el menú al hacer clic */}
-      <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
-        <li><a href="#inicio" onClick={() => setIsOpen(false)}>Inicio</a></li>
-        <li><a href="#servicios" onClick={() => setIsOpen(false)}>Servicios</a></li>
-        <li><a href="#acerca" onClick={() => setIsOpen(false)}>Acerca de</a></li>
-        <li><a href="#contacto" onClick={() => setIsOpen(false)}>Contacto</a></li>
-      </ul>
+        <button className="nav-toggle" onClick={() => setOpen(!open)} aria-label="Abrir menú">
+          <span className="bar" />
+          <span className="bar" />
+          <span className="bar" />
+        </button>
 
-      {/* Botón de menú hamburguesa para móviles */}
-      <div className="navbar-toggle" onClick={toggleMenu} aria-expanded={isOpen} aria-label="Toggle navigation">
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
+        <div className={`nav-links ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>
+          <NavLink to="/" end className={({isActive}) => isActive ? 'active' : ''}>Inicio</NavLink>
+          <NavLink to="/scanner" className={({isActive}) => isActive ? 'active' : ''}>Escáner</NavLink>
+          <NavLink to="/help" className={({isActive}) => isActive ? 'active' : ''}>Ayuda</NavLink>
+        </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
