@@ -1,14 +1,28 @@
 version: '3.8'
 
 services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      # - "443:443" # Uncomment if you configure SSL certificates later
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+
   frontend:
     build: ./frontend
+    # Exposing ports here is no longer strictly necessary since Nginx handles the entry point,
+    # but keeping it doesn't hurt if you still want direct access during development.
     ports:
       - "5173:5173"
     depends_on:
       - api-qr
       - api-ubicacion
     environment:
+      # Crucial: Since the frontend runs in the user's browser, it needs to hit 
+      # the host's ports (localhost), not the internal Docker container names.
       - VITE_API_QR_URL=http://localhost:8001
       - VITE_API_UBICACION_URL=http://localhost:8002
 
