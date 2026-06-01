@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS servicios         CASCADE;
 DROP TABLE IF EXISTS ubicaciones       CASCADE;
 DROP TABLE IF EXISTS tipos_espacio     CASCADE;
 DROP TABLE IF EXISTS pisos             CASCADE;
+DROP TABLE IF EXISTS usuarios          CASCADE;
 
 
 -- ────────────────────────────────────────────────────────────
@@ -67,6 +68,17 @@ CREATE TABLE ubicacion_servicios (
     ubicacion_id INTEGER NOT NULL REFERENCES ubicaciones(id) ON DELETE CASCADE,
     servicio_id  INTEGER NOT NULL REFERENCES servicios(id)   ON DELETE CASCADE,
     PRIMARY KEY (ubicacion_id, servicio_id)
+);
+
+-- Usuarios del sistema (autenticación)
+CREATE TABLE usuarios (
+    id         SERIAL       PRIMARY KEY,
+    username   VARCHAR(80)  NOT NULL UNIQUE,
+    email      VARCHAR(150) NOT NULL UNIQUE,
+    password   VARCHAR(255) NOT NULL,
+    rol        VARCHAR(20)  NOT NULL DEFAULT 'USER' CHECK (rol IN ('ADMIN', 'USER')),
+    activo     BOOLEAN      NOT NULL DEFAULT TRUE,
+    creado_en  TIMESTAMP    NOT NULL DEFAULT NOW()
 );
 
 -- Historial de escaneos (opcional, desafío avanzado)
