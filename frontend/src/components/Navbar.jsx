@@ -19,6 +19,7 @@ function Navbar() {
           <NavLink to="/" end className={({isActive}) => isActive ? 'active' : ''}>Inicio</NavLink>
           <NavLink to="/scanner" className={({isActive}) => isActive ? 'active' : ''}>Escáner</NavLink>
           <NavLink to="/help" className={({isActive}) => isActive ? 'active' : ''}>Ayuda</NavLink>
+          <NavLink to="/roominfo" className={({isActive}) => isActive ? 'active' : ''}>Mapa</NavLink>
         </div>
       </div>
     </nav>
