@@ -1,10 +1,15 @@
 /* ==========================================================================
-   PALETA PASTEL COMPLETA: AZUL, CELESTE, MORADO, BLANCO Y NEGRO
+   CSS FINAL: TARJETAS TRANSPARENTES, BORDES NEÓN Y FOTO POR URL DIRECTA
    ========================================================================== */
 
-/* 1. Fondo general de la pantalla (Azul Oscuro Profundo) */
+/* 1. Fondo general: Llama a la URL de la foto y le aplica el oscurecido del 82% */
 html, body, #root, .home-page {
-  background-color: #0b0f19 !important;
+  background-image: linear-gradient(rgba(11, 15, 25, 0.82), rgba(11, 15, 25, 0.82)), 
+                    url('https://mail.google.com/mail/u/0?ui=2&ik=e9ec2f4b21&attid=0.1&permmsgid=msg-f:1866830779421176805&th=19e850b3f72a33e5&view=fimg&fur=ip&permmsgid=msg-f:1866830779421176805&sz=s0-l75-ft&attbid=ANGjdJ83Pk95TIiiv6WoWH-FdYvaAJ7tjla6tqTgMjAkNwhI8aZNlhDjWgLeAaxhHzKJtQE0wUgaqm8S1FA-LLdS53hNS1zB7siFhk2p7c_a-hykLp4JnubErBhbeoI&disp=emb&realattid=ii_19e850af33a6a8255eb1&zw') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
   color: #ffffff !important;
   margin: 0;
   padding: 0;
@@ -15,7 +20,7 @@ html, body, #root, .home-page {
   justify-content: center;
 }
 
-/* Container que centra todo en PC */
+/* Contenedor principal centrado */
 .home-container {
   width: 100%;
   max-width: 1000px;
@@ -23,7 +28,7 @@ html, body, #root, .home-page {
   padding: 2rem;
 }
 
-/* 2. Sección del título superior */
+/* Títulos de la app */
 .hero-section {
   text-align: center;
   margin-bottom: 3.5rem;
@@ -47,23 +52,22 @@ html, body, #root, .home-page {
 }
 
 .hero-section p {
-  color: #94a3b8 !important; /* Blanco suave */
+  color: #94a3b8 !important;
   font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* 3. La Grilla que ordena tus dos bloques de lado a lado en PC */
+/* Grilla que alinea las tarjetas de lado a lado */
 .actions-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos columnas perfectas */
+  grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
 }
 
-/* 4. Estilos para tus dos tarjetas */
+/* 2. RECUADROS TOTALMENTE TRANSPARENTES */
 .action-card {
-  background-color: #131a2c !important; /* Azul secundario para las tarjetas */
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background-color: transparent !important; /* 100% Transparente */
   border-radius: 20px;
   padding: 2.5rem;
   text-align: center;
@@ -71,11 +75,9 @@ html, body, #root, .home-page {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Emojis/Iconos que pusiste */
 .card-icon {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
@@ -87,32 +89,39 @@ html, body, #root, .home-page {
   margin: 0 0 0.8rem 0;
 }
 
-/* Modificación según la tarjeta para las luces decorativas */
-.card-celeste h3 { color: #a5f3fc !important; } /* Título celeste pastel */
-.card-morado h3 { color: #e9d5ff !important; }  /* Título morado pastel */
+/* 3. BORDES NEÓN FIJOS SEGÚN CADA RECUADRO */
+.card-celeste {
+  border: 2px solid rgba(165, 243, 252, 0.8) !important; /* Neón celeste fijo */
+  box-shadow: 0 0 15px rgba(165, 243, 252, 0.3);
+}
+.card-celeste h3 { color: #a5f3fc !important; }
+
+.card-morado {
+  border: 2px solid rgba(233, 213, 255, 0.7) !important; /* Neón morado fijo */
+  box-shadow: 0 0 15px rgba(233, 213, 255, 0.25);
+}
+.card-morado h3 { color: #e9d5ff !important; }
 
 .action-card p {
   color: #cbd5e1 !important;
   font-size: 0.95rem;
   line-height: 1.5;
   margin: 0 0 2rem 0;
-  min-height: 45px; /* Alinea los textos */
+  min-height: 45px;
 }
 
-/* Efectos de iluminación al pasar el mouse por encima */
+/* Al pasar el mouse por encima de la tarjeta, el neón brilla más potente */
 .card-celeste:hover {
   transform: translateY(-5px);
-  border-color: #a5f3fc !important;
-  box-shadow: 0 0 25px rgba(165, 243, 252, 0.15);
+  box-shadow: 0 0 25px rgba(165, 243, 252, 0.6), inset 0 0 10px rgba(165, 243, 252, 0.2);
 }
 
 .card-morado:hover {
   transform: translateY(-5px);
-  border-color: #e9d5ff !important;
-  box-shadow: 0 0 25px rgba(233, 213, 255, 0.12);
+  box-shadow: 0 0 25px rgba(233, 213, 255, 0.5), inset 0 0 10px rgba(233, 213, 255, 0.15);
 }
 
-/* 5. Los Botones con Letras Negras para máximo contraste */
+/* 4. BOTONES INTACTOS (Tus colores pastel originales con texto negro) */
 .btn {
   border: none !important;
   padding: 1rem 2rem !important;
@@ -121,8 +130,10 @@ html, body, #root, .home-page {
   border-radius: 14px !important;
   cursor: pointer !important;
   width: 100% !important;
-  color: #000000 !important; /* TEXTO NEGRO IMPRESCINDIBLE */
+  color: #000000 !important; /* TEXTO NEGRO */
   transition: transform 0.2s ease, filter 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
 
 .btn:hover {
@@ -142,7 +153,33 @@ html, body, #root, .home-page {
   box-shadow: 0 4px 15px rgba(233, 213, 255, 0.15);
 }
 
-/* Responsive para cuando achiques la pantalla */
+/* 5. EFECTO BRILLO EN MOVIMIENTO EN LOS BOTONES */
+.btn::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -150% !important;
+  width: 50% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  transform: skewX(-20deg) !important;
+}
+
+.btn:hover::after {
+  animation: deslizarBrillo 0.75s ease-in-out forwards !important;
+}
+
+@keyframes deslizarBrillo {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+/* Responsive para celular */
 @media (max-width: 768px) {
   .actions-grid {
     grid-template-columns: 1fr;
