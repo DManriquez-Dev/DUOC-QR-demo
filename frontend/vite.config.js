@@ -6,6 +6,6 @@ export default defineConfig({
   server: {
     host: true,
     port: 5173,
-    allowedHosts: ['qr.ordelia.cl'],
+    allowedHosts: ['cake-web.cl'],
   },
 })
