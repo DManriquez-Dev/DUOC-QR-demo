@@ -1,0 +1,25 @@
+name: Self-hosted deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy on self-hosted runner
+    runs-on: [self-hosted, linux, x64]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure latest code and deploy stack
+        run: |
+          git fetch --all
+          git checkout main
+          git pull origin main
+          docker compose down -v
+          docker compose up --build -d

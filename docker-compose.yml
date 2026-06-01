@@ -2,34 +2,23 @@ version: '3.8'
 
 services:
   nginx:
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+      args:
+        VITE_API_QR_URL: https://cake-web.cl/api-qr
+        VITE_API_UBICACION_URL: https://cake-web.cl/api-ubicacion
     ports:
       - "80:80"
-      # - "443:443" # Uncomment if you configure SSL certificates later
+      - "443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - frontend
-
-  frontend:
-    build: ./frontend
-    # Exposing ports here is no longer strictly necessary since Nginx handles the entry point,
-    # but keeping it doesn't hurt if you still want direct access during development.
-    ports:
-      - "5173:5173"
-    depends_on:
       - api-qr
       - api-ubicacion
-    environment:
-      # Crucial: Since the frontend runs in the user's browser, it needs to hit 
-      # the host's ports (localhost), not the internal Docker container names.
-      - VITE_API_QR_URL=http://localhost:8001
-      - VITE_API_UBICACION_URL=http://localhost:8002
 
   api-qr:
     build: ./api-qr
-    ports:
-      - "8001:8001"
     depends_on:
       postgres:
         condition: service_healthy
@@ -39,8 +28,6 @@ services:
 
   api-ubicacion:
     build: ./api-ubicacion
-    ports:
-      - "8002:8002"
     depends_on:
       postgres:
         condition: service_healthy
@@ -49,8 +36,6 @@ services:
 
   postgres:
     image: postgres:15-alpine
-    ports:
-      - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
