@@ -5,7 +5,7 @@
 /* 1. Fondo general: Llama a la URL de la foto y le aplica el oscurecido del 82% */
 html, body, #root, .home-page {
   background-image: linear-gradient(rgba(11, 15, 25, 0.82), rgba(11, 15, 25, 0.82)), 
-                    url('https://mail.google.com/mail/u/0?ui=2&ik=e9ec2f4b21&attid=0.1&permmsgid=msg-f:1866830779421176805&th=19e850b3f72a33e5&view=fimg&fur=ip&permmsgid=msg-f:1866830779421176805&sz=s0-l75-ft&attbid=ANGjdJ83Pk95TIiiv6WoWH-FdYvaAJ7tjla6tqTgMjAkNwhI8aZNlhDjWgLeAaxhHzKJtQE0wUgaqm8S1FA-LLdS53hNS1zB7siFhk2p7c_a-hykLp4JnubErBhbeoI&disp=emb&realattid=ii_19e850af33a6a8255eb1&zw') !important;
+                    url('/unnamed.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
