@@ -28,7 +28,7 @@ function Home() {
             <div className="card-icon">🗺️</div>
             <h3>Ver Ubicaciones</h3>
             <p>Explora el listado completo y la ubicación de las salas manualmente.</p>
-            <button className="btn btn-morado" onClick={() => navigate('/room-info')}>
+            <button className="btn btn-morado" onClick={() => navigate('/roominfo')}>
               Explorar Mapa
             </button>
           </div>
