@@ -65,7 +65,7 @@ docker compose up --build
 | GET    | `/api/ubicaciones`      | Lista todas las ubicaciones        |
 | GET    | `/api/ubicaciones/{id}` | Detalle de una ubicación           |
 
-## Ejecutar tests
+## Ejecutar tests back
 
 ```bash
 cd api-qr
@@ -76,6 +76,13 @@ cd ../api-ubicacion
 pip install -r requirements.txt
 pytest tests/
 ```
+## Ejecutar tests front
+
+```bash
+cd frontend
+npm install
+npx playwright install 
+```
 
 ## Stack tecnológico
 
@@ -83,4 +90,4 @@ pytest tests/
 - **Backend:** Python 3.11 + FastAPI + SQLAlchemy
 - **Base de datos:** PostgreSQL 15
 - **DevOps:** Docker + Docker Compose
-- **Testing:** Pytest + Postman
+- **Testing:** Pytest + Postman / vitest + react testing library + playwright + mock service worker
