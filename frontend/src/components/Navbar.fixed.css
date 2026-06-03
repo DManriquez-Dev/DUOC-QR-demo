@@ -1,0 +1,62 @@
+:root{ --navbar-height:64px; --navbar-bg: linear-gradient(90deg,#ffffff,#f7fbff); }
+/* Barra fija y con ligero desenfoque */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:var(--navbar-height);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 1rem;
+  background:var(--navbar-bg);
+  backdrop-filter: blur(6px);
+  box-shadow:0 6px 20px rgba(11,42,68,0.08);
+  z-index:1000;
+}
+
+.navbar-logo h2{
+  margin:0;
+  font-size:1.15rem;
+  color:#0b2a44;
+  letter-spacing:0.2px;
+}
+
+/* Enlaces principales */
+.navbar-links{
+  list-style:none;
+  display:flex;
+  gap:0.8rem;
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+
+.navbar-links li a{
+  padding:0.45rem 0.7rem;
+  border-radius:8px;
+  text-decoration:none;
+  color:#0b2a44;
+  font-weight:500;
+  transition:background .15s, color .15s, transform .12s;
+}
+.navbar-links li a:hover{ background:rgba(11,42,68,0.06); transform:translateY(-1px); }
+
+/* Botón hamburguesa */
+.navbar-toggle{ display:none; cursor:pointer; padding:6px; border-radius:6px; }
+.navbar-toggle .bar{ display:block; width:22px; height:2px; background:#0b2a44; margin:4px 0; transition:transform .2s; }
+
+/* Evitar que el contenido quede detrás de la navbar */
+.home-page{ padding-top:var(--navbar-height); }
+
+/* Estado activo para menú móvil (se muestra como columna) */
+.navbar-links.active{ display:flex; flex-direction:column; gap:0.4rem; padding:0.6rem 1rem; }
+
+/* Responsive */
+@media (max-width:720px){
+  .navbar{ padding:0 0.8rem; }
+  .navbar-links{ display:none; position:absolute; top:var(--navbar-height); left:0; right:0; background:linear-gradient(180deg,#ffffff,#f6f8ff); box-shadow:0 10px 30px rgba(11,42,68,0.06); }
+  .navbar-toggle{ display:block; }
+  .navbar-links.active{ display:flex; }
+}

@@ -9,5 +9,6 @@ export default defineConfig({
     setupFiles: ['./setupTests.js'],
     host: true,
     port: 5173,
+    allowedHosts: ['cake-web.cl'],
   },
 })

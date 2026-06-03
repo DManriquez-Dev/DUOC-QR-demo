@@ -1,14 +1,28 @@
 version: '3.8'
 
 services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      # - "443:443" # Uncomment if you configure SSL certificates later
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+
   frontend:
     build: ./frontend
+    # Exposing ports here is no longer strictly necessary since Nginx handles the entry point,
+    # but keeping it doesn't hurt if you still want direct access during development.
     ports:
       - "5173:5173"
     depends_on:
       - api-qr
       - api-ubicacion
     environment:
+      # Crucial: Since the frontend runs in the user's browser, it needs to hit 
+      # the host's ports (localhost), not the internal Docker container names.
       - VITE_API_QR_URL=http://localhost:8001
       - VITE_API_UBICACION_URL=http://localhost:8002
 
@@ -17,16 +31,19 @@ services:
     ports:
       - "8001:8001"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/qr_duoc
+      - JWT_SECRET=duoc-qr-secret-cambia-esto-en-produccion-1234567890
 
   api-ubicacion:
     build: ./api-ubicacion
     ports:
       - "8002:8002"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/qr_duoc
 
@@ -38,6 +55,11 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=qr_duoc
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
