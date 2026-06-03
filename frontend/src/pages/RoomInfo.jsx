@@ -179,7 +179,7 @@ function RoomInfo() {
             className="btn btn-primary" 
             onClick={() => navigate('/scanner')}
           >
-            📷 Escanear otro QR
+            Escanear otro QR
           </button>
           <button 
             className="btn btn-secondary" 
