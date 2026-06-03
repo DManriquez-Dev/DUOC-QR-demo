@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: ./nginx/Dockerfile
       args:
-        VITE_API_QR_URL: https://cake-web.cl/api-qr
-        VITE_API_UBICACION_URL: https://cake-web.cl/api-ubicacion
+        VITE_API_QR_URL: /api-qr
+        VITE_API_UBICACION_URL: /api-ubicacion
     ports:
       - "80:80"
     volumes:
@@ -40,7 +40,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=qr_duoc
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       timeout: 5s
       retries: 5
